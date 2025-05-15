@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>আপনার পেইজ</title>
+  <style>
+    body {
+      font-family: "Noto Sans Bengali", sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+      padding: 30px 15px;
+    }
+    h1 {
+      color: #333;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 40px;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #d73833;
+    }
+    .content {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>কিস্তি হিসাব</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding-top: 50px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #333;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .calculate-btn { background: #28a745; color: white; }
+    .reset-btn { background: #dc3545; color: white; }
+    .calculate-btn:hover { background: #218838; }
+    .reset-btn:hover { background: #c82333; }
+
+    .card {
+      background-color: #f1f8e9;
+      padding: 10px 15px;
+      border-left: 5px solid #689f38;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px 5px;
+      text-align: center;
+    }
+
+    th {
+      background: #c8e6c9;
+      font-weight: bold;
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #ff7043;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    .developer {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      margin: 15px 0 5px;
+    }
+
+    @media (max-width: 420px) {
+      .container {
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .back-btn {
+        font-size: 13px;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  
+
+  <div class="section">
+    <div class="container">
+      <h2>General Hire Sales</h2>
+
+      <div id="input-section">
+        <input type="number" id="mrp" placeholder="MRP (যেমন: 75990)">
+        <input type="number" id="downPayment" placeholder="Down Payment (যেমন: 10000)">
+
+        <div class="btn-group">
+          <button class="reset-btn" onclick="resetForm()">🔄 রিসেট</button>
+          <button class="calculate-btn" onclick="calculateEMI()">📥 হিসাব করুন</button>
+        </div>
+      </div>
+
+      <div id="result"></div>
+<a href="index.html" class="btn">Back</a>
+      <p class="developer">Developed by <strong>Md.Faruk Ahammed-(ID-50571)</strong></p>
+    </div>
+  </div>
+
+  <script>
+    function calculateEMI() {
+      const mrp = parseFloat(document.getElementById("mrp").value);
+      const down = parseFloat(document.getElementById("downPayment").value);
+      const resultDiv = document.getElementById("result");
+
+      if (isNaN(mrp) || isNaN(down) || mrp < 3000) {
+        alert("সঠিক MRP এবং Down Payment দিন।");
+        return;
+      }
+
+      document.getElementById("input-section").style.display = "none";
+
+      let cashDuration = 0, valueDurations = [], loadPercent = 0;
+
+      if (mrp <= 10000) {
+        cashDuration = 3; valueDurations = [6]; loadPercent = 2;
+      } else if (mrp <= 30000) {
+        cashDuration = 6; valueDurations = [9, 12]; loadPercent = 2;
+      } else if (mrp <= 50000) {
+        cashDuration = 6; valueDurations = [9, 12, 15, 18]; loadPercent = 2;
+      } else if (mrp <= 75000) {
+        cashDuration = 9; valueDurations = [12, 15, 18, 21, 24]; loadPercent = 2.5;
+      } else {
+        cashDuration = 12; valueDurations = [15, 18, 21, 24]; loadPercent = 3;
+      }
+
+      const hireCashPrice = Math.round(mrp * (1 + loadPercent / 100));
+      const principal = hireCashPrice - down;
+      const hireCashEMI = Math.round(principal / cashDuration);
+      const twentyPercent = Math.round(hireCashPrice * 0.20);
+
+      let processingFee = 0;
+      if (mrp <= 10000) processingFee = 150;
+      else if (mrp <= 30000) processingFee = 250;
+      else if (mrp <= 50000) processingFee = 300;
+      else if (mrp <= 75000) processingFee = 350;
+      else if (mrp <= 200000) processingFee = 400;
+      else processingFee = 500;
+
+      let html = `
+        <div class="card">MRP: ${mrp} ৳</div>
+        <div class="card">Down Payment: ${down} ৳</div>
+        <div class="card"><strong>Hire Cash Price: ${hireCashPrice} ৳ (${cashDuration} মাস)</strong></div>
+        <div class="card"><strong>Hire Cash কিস্তি: ${hireCashEMI} ৳</strong></div>
+        <div class="card">Minimum DownPayment: ${twentyPercent} ৳</div>
+        <div class="card">প্রসেসিং ফি : ${processingFee} ৳</div>
+
+        <table>
+          <tr>
+            <th>মাস</th>
+            <th>Hire Value</th>
+            <th>Down Payment</th>
+            <th>Outstanding</th>
+            <th>মাসিক কিস্তি</th>
+          </tr>
+      `;
+
+      valueDurations.forEach(months => {
+        const totalLoad = (principal * 0.15 / 12) * months;
+        const outstanding = Math.round(principal + totalLoad);
+        const hireValue = outstanding + down;
+        const emi = Math.round(outstanding / months);
+        html += `
+          <tr>
+            <td>${months}</td>
+            <td><strong>${hireValue}</strong></td>
+            <td><strong>${down}</strong></td>
+            <td><strong>${outstanding}</strong></td>
+            <td><strong>${emi}</strong></td>
+          </tr>
+        `;
+      });
+
+      html += `</table>`;
+      resultDiv.innerHTML = html;
+    }
+
+    function resetForm() {
+      document.getElementById("mrp").value = "";
+      document.getElementById("downPayment").value = "";
+      document.getElementById("result").innerHTML = "";
+      document.getElementById("input-section").style.display = "block";
+    }
+  </script>
+</body>
+</html>
+  </div>
+
+  
+</body>
+</html>
